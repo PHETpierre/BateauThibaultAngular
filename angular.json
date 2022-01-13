@@ -48,9 +48,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+                "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"    
+            ]
           },
           "configurations": {
             "production": {
@@ -115,7 +118,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }
