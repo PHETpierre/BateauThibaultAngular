@@ -1,8 +1,18 @@
-<h1 style="text-align:center">Page d'affichage des details du produit</h1>
+<div class="row col-sm-12">
+    <h1 style="text-align:center" class="col-sm-12">Page d'affichage des details du produit</h1>
 
-<div style="text-align:center" class="">
-    <div>Poisson details</div>
-    <div>nom: {{ bar.name }}</div>
-    <div>prix: {{ bar.price }}</div>
-    <div>quantite: {{ bar.quantity_stock }}</div>
+    <input type="text" name="" value="">
+    <div style="text-align:center" class="well col-sm-12 gb-light border rounded-3">
+        <div>Poisson details</div>
+        <div>nom: {{ bar.name }}</div>
+        <div>
+            prix: {{ bar.price }}
+            <i class="fas fa-euro-sign"></i>
+        </div>
+        <div>quantite: {{ bar.quantity_stock }}</div>
+        <div>promotion: {{ bar.discount }}</div>
+        <div>prix en promotion: {{ bar.price_on_sale }}</div>
+        <div>quantite vendu: {{ bar.quantity_sold }}</div>
+        <div>commentaire: {{ bar.comments }}</div>
+    </div>
 </div>

@@ -9,13 +9,13 @@ import { ProductsService } from '../../core/services/products.service';
 })
 export class DetailsProduitComponent implements OnInit {
     listeProduits: Product[] = [];
-    bar: Product = { quantity:0, price:0, quantity_stock:0, id:0 };
+    bar: Product = {};
 
     constructor(public productsService: ProductsService) { }
 
     getProducts(){
-        this.productsService.getProductFromJson().subscribe((res: Product[]) => {
-            console.log(res);
+        this.productsService.getProductFromPython().subscribe((res: Product[]) => {
+            // console.log(res);
             this.listeProduits = res;
             // res.forEach( (product) => {
             //     // console.log(product);
@@ -29,7 +29,7 @@ export class DetailsProduitComponent implements OnInit {
     )};
 
     getProduit(id: number){
-        let result: Product = { name:'', quantity:0, price:0, quantity_stock:0, id:0 };
+        let result: Product = {};
         // console.log(this.listeProduits[id]);
         this.listeProduits.forEach((product) => {
             if(product.id == id) result = product;
