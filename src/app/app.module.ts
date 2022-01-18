@@ -10,6 +10,7 @@ import { FooterComponent } from './features/footer/footer.component';
 import { DetailsProduitComponent } from './pages/details-produit/details-produit.component';
 import { ProductsService } from './core/services/products.service';
 import { GestionProduitsComponent } from './pages/gestion-produits/gestion-produits.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GestionProduitsComponent } from './pages/gestion-produits/gestion-produ
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

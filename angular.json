@@ -49,12 +49,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
-                "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-                "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/@fortawesome/fontawesome-free/js/all.min.js"    
+                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                "node_modules/@fortawesome/fontawesome-free/js/all.min.js"    
             ]
           },
           "configurations": {
