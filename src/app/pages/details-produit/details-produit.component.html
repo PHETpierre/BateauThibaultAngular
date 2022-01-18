@@ -1,7 +1,10 @@
 <div class="row col-sm-12">
     <h1 style="text-align:center" class="col-sm-12">Page d'affichage des details du produit</h1>
 
-    <input type="text" name="" value="">
+    <input type="text" name="" value="" [formControl]="typeahead" (input)="suggest()">
+    <div class="suggestions" *ngIf="suggestions.length">
+        <p *ngFor="let s of suggestions">{{ s }}</p>
+    </div>
     <div style="text-align:center" class="well col-sm-12 gb-light border rounded-3">
         <div>Poisson details</div>
         <div>nom: {{ bar.name }}</div>

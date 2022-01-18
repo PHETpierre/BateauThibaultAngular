@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 
 .git-credentials
+src/app/GlobalVariables.ts

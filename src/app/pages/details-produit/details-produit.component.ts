@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product.Product';
 import { ProductsService } from '../../core/services/products.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details-produit',
@@ -42,4 +43,17 @@ export class DetailsProduitComponent implements OnInit {
         this.getProducts();
     }
 
+    typeahead: FormControl = new FormControl();
+
+    suggestions: Product[] = [];
+    suggest() {
+        console.log('hello');
+
+        // this.listeProduits.forEach((product) => {
+        //     if(product.name.startsWith() == id) result = product;
+        // });
+        // this.suggestions = this.listeProduits
+        //   .filter(c => c.startsWith(this.typeahead.value))
+        //   .slice(0, 5);
+    }
 }
