@@ -9,7 +9,8 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { DetailsProduitComponent } from './pages/details-produit/details-produit.component';
 import { ProductsService } from './core/services/products.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GestionProduitsComponent } from './pages/gestion-produits/gestion-produits.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    DetailsProduitComponent
+    DetailsProduitComponent,
+    GestionProduitsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
