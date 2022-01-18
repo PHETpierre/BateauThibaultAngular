@@ -54,7 +54,7 @@
             ],
             "scripts": [
                 "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-                "node_modules/@fortawesome/fontawesome-free/js/all.min.js"    
+                "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
             ]
           },
           "configurations": {
@@ -120,8 +120,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "/home/pierre/Documents/ADO2021/Angular/Projet/BateauThibaultAngular/node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
             "scripts": []
           }

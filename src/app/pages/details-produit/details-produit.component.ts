@@ -14,8 +14,8 @@ export class DetailsProduitComponent implements OnInit {
     constructor(public productsService: ProductsService) { }
 
     getProducts(){
-        this.productsService.getProductFromJson().subscribe((res: Product[]) => {
-            console.log(res);
+        this.productsService.getProductFromPython().subscribe((res: Product[]) => {
+            // console.log(res);
             this.listeProduits = res;
             // res.forEach( (product) => {
             //     // console.log(product);
