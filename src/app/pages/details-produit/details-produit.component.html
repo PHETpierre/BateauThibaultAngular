@@ -1,11 +1,11 @@
 <div class="row col-sm-12">
     <h1 style="text-align:center" class="col-sm-12">Page d'affichage des details du produit</h1>
 
-    <input type="text" name="" value="" [formControl]="typeahead" (input)="suggest()">
+    <input type="text" name="" value="" (input)="suggest()">
     <div class="suggestions" *ngIf="suggestions.length">
         <p *ngFor="let s of suggestions">{{ s }}</p>
     </div>
-    <div style="text-align:center" class="well col-sm-12 gb-light border rounded-3">
+    <div style="text-align:center" class="col-sm-12 bg-light border rounded-3">
         <div>Poisson details</div>
         <div>nom: {{ bar.name }}</div>
         <div>
@@ -17,5 +17,20 @@
         <div>prix en promotion: {{ bar.price_on_sale }}</div>
         <div>quantite vendu: {{ bar.quantity_sold }}</div>
         <div>commentaire: {{ bar.comments }}</div>
+    </div>
+    <div style="text-align:center" class="col-sm-12 bg-light">
+        <div>Modifier quantité</div>
+        <input class="col-sm-4" type="text" name="" value="">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary">Ajouter</button>
+            <button type="button" class="btn btn-primary">Retirer</button>
+        </div>
+    </div>
+    <div style="text-align:center" class="col-sm-12 bg-light">
+        <div>Modifier promotion</div>
+        <input class="col-sm-4" type="text" name="" value="">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary">Modifier</button>
+        </div>
     </div>
 </div>
