@@ -10,7 +10,8 @@ import { FormControl } from '@angular/forms';
 })
 export class DetailsProduitComponent implements OnInit {
     listeProduits: Product[] = [];
-    bar: Product = {};
+    selectedProduit: Product = {};
+    selectedId: number = 1;
 
     constructor(public productsService: ProductsService) { }
 
@@ -22,7 +23,7 @@ export class DetailsProduitComponent implements OnInit {
             //     // console.log(product);
             //     this.listeProduits.push(product);
             // })
-            this.bar = this.getProduit(1);
+            this.selectedProduit = this.getProduit(1);
         },
         (err) => {
             alert('failed to get data from json');
@@ -41,19 +42,10 @@ export class DetailsProduitComponent implements OnInit {
 
     ngOnInit(): void {
         this.getProducts();
+        this.selectedProduit = this.getProduit(this.selectedId);
     }
 
-    typeahead: FormControl = new FormControl();
-
-    suggestions: Product[] = [];
-    suggest() {
-        console.log('hello');
-
-        // this.listeProduits.forEach((product) => {
-        //     if(product.name.startsWith() == id) result = product;
-        // });
-        // this.suggestions = this.listeProduits
-        //   .filter(c => c.startsWith(this.typeahead.value))
-        //   .slice(0, 5);
+    updateId(){
+        this.selectedProduit = this.getProduit(this.selectedId);
     }
 }

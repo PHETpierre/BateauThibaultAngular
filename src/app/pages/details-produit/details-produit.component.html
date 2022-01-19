@@ -1,36 +1,47 @@
 <div class="row col-sm-12">
     <h1 style="text-align:center" class="col-sm-12">Page d'affichage des details du produit</h1>
 
-    <input type="text" name="" value="" (input)="suggest()">
-    <div class="suggestions" *ngIf="suggestions.length">
-        <p *ngFor="let s of suggestions">{{ s }}</p>
-    </div>
+    <!-- <input type="text" name="" value="" (input)="suggest()"> -->
+
+    <!-- <ng-select [(ngModel)]="selectedid" (change)="updateId()">
+       <ng-option *ngFor="let produit of listeProduits" [value]="produit.id">{{produit.name}}</ng-option>
+    </ng-select> -->
+
+    <ng-select [items]="listeProduits"
+               bindLabel="name"
+               bindValue="id"
+               [(ngModel)]="selectedId"
+               (change)="updateId()">
+    </ng-select>
+
     <div style="text-align:center" class="col-sm-12 bg-light border rounded-3">
         <div>Poisson details</div>
-        <div>nom: {{ bar.name }}</div>
+        <div>nom: {{ selectedProduit.name }}</div>
         <div>
-            prix: {{ bar.price }}
+            prix: {{ selectedProduit.price }}
             <i class="fas fa-euro-sign"></i>
         </div>
-        <div>quantite: {{ bar.quantity_stock }}</div>
-        <div>promotion: {{ bar.discount }}</div>
-        <div>prix en promotion: {{ bar.price_on_sale }}</div>
-        <div>quantite vendu: {{ bar.quantity_sold }}</div>
-        <div>commentaire: {{ bar.comments }}</div>
+        <div>quantite: {{ selectedProduit.quantity_stock }}</div>
+        <div>promotion: {{ selectedProduit.discount }}</div>
+        <div>prix en promotion: {{ selectedProduit.price_on_sale }}</div>
+        <div>quantite vendu: {{ selectedProduit.quantity_sold }}</div>
+        <div>commentaire: {{ selectedProduit.comments }}</div>
     </div>
-    <div style="text-align:center" class="col-sm-12 bg-light">
-        <div>Modifier quantité</div>
-        <input class="col-sm-4" type="text" name="" value="">
-        <div class="col-sm-12">
-            <button type="button" class="btn btn-primary">Ajouter</button>
-            <button type="button" class="btn btn-primary">Retirer</button>
+    <div class="col-sm-12 bg-light p-1 m-1 rounded-3">
+        <div style="text-align:center" class="col-sm-12 bg-light p-1">
+            <div>Modifier quantité</div>
+            <input class="col-sm-4" type="text" name="" value="">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary m-1">Ajouter</button>
+                <button type="button" class="btn btn-danger m-1">Retirer</button>
+            </div>
         </div>
-    </div>
-    <div style="text-align:center" class="col-sm-12 bg-light">
-        <div>Modifier promotion</div>
-        <input class="col-sm-4" type="text" name="" value="">
-        <div class="col-sm-12">
-            <button type="button" class="btn btn-primary">Modifier</button>
+        <div style="text-align:center" class="col-sm-12 bg-light">
+            <div>Modifier promotion</div>
+            <input class="col-sm-4" type="text" name="" value="">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary m-1">Modifier</button>
+            </div>
         </div>
     </div>
 </div>

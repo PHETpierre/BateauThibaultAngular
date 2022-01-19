@@ -11,6 +11,7 @@ import { DetailsProduitComponent } from './pages/details-produit/details-produit
 import { ProductsService } from './core/services/products.service';
 import { GestionProduitsComponent } from './pages/gestion-produits/gestion-produits.component';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgSelectModule,
     FormsModule
   ],
   providers: [ProductsService],
