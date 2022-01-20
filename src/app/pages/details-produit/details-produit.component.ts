@@ -16,42 +16,14 @@ export class DetailsProduitComponent implements OnInit {
     constructor(public productsService: ProductsService) { }
 
     getProducts(){
-        // this.productsService.getProducts().subscribe((res: Product[]) => {
-            // console.log(res);
-            // this.listeProduits = res;
-            // res.forEach( (product) => {
-            //     // console.log(product);
-            //     this.listeProduits.push(product);
-            // })
-            // this.selectedProduit = this.getProduit(1);
-            // console.log(this.listeProduits);
-        // },
-        // (err) => {
-        //     alert('failed to get data from json');
-        // }
-        this.listeProduits = [];
-        this.productsService.getCrustaces().subscribe((res: Product[]) => {
-          this.listeProduits = this.listeProduits.concat(res);
-
-          this.productsService.getPoissons().subscribe((res: Product[]) => {
-            this.listeProduits = this.listeProduits.concat(res);
-
-            this.productsService.getFruitsDeMer().subscribe((res: Product[]) => {
-              this.listeProduits = this.listeProduits.concat(res);
-              console.log(this.listeProduits);
-              this.selectedProduit = this.getProduit(1);
-            },
-            (err) => {
-                alert('failed to get data from json');
-            })
-          },
-          (err) => {
-              alert('failed to get data from json');
-          })
+        this.productsService.getProducts().subscribe((res: Product[]) => {
+            console.log(res);
+            this.listeProduits = res;
+            this.selectedProduit = this.getProduit(1);
         },
         (err) => {
-            alert('failed to get data from json');
-        })
+             alert('failed to get data from json');
+         })
     };
 
     getProduit(id: number){
@@ -63,20 +35,16 @@ export class DetailsProduitComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.updateData();
+      this.getProducts();
     }
 
     updateId(){
         this.selectedProduit = this.getProduit(this.selectedId);
     }
 
-    updateData(){
-      this.getProducts();
-    }
-
     addProduct(){
       this.productsService.addProductStock(this.selectedProduit).subscribe((res: Product) => {
-        this.updateData();
+        this.getProducts();
       },
       (err) => {
           alert('failed to add data');
@@ -85,7 +53,7 @@ export class DetailsProduitComponent implements OnInit {
 
     removeProduct(){
       this.productsService.removeProductStock(this.selectedProduit).subscribe((res: Product) => {
-        this.updateData();
+        this.getProducts();
       },
       (err) => {
           alert('failed to add data');
@@ -94,7 +62,7 @@ export class DetailsProduitComponent implements OnInit {
 
     modifyPromotion(){
       this.productsService.putProductOnSale(this.selectedProduit).subscribe((res: Product) => {
-        this.updateData();
+        this.getProducts();
       },
       (err) => {
           alert('failed to add data');

@@ -107,11 +107,6 @@ export class GestionProduitsComponent implements OnInit {
         }
 
         product.inStock = product.inStock + product.quantity;
-        /*this.listeCrustaces.forEach(crustace => {
-          if (crustace.id == product.id){
-            //crustace.inStock += product.quantity;
-          }
-        });*/
         break;
       case 'fruitDeMer':
         break;
