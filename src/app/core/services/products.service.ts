@@ -14,6 +14,10 @@ export class ProductsService {
     return this.http.get<Product[]>(this.globalVar.urlDev+"/infoproducts/");
   }
 
+  getSingleProduct(id:number){
+    return this.http.get<Product>(this.globalVar.urlDev+"/infoproduct/"+id+"/");
+  }
+
   getCrustaces(){
     return this.http.get<Product[]>(this.globalVar.urlDev+"/infocrustaces/");
   }
