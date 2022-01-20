@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product.Product';
 import { ProductsService } from '../../core/services/products.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details-produit',
@@ -9,7 +10,8 @@ import { ProductsService } from '../../core/services/products.service';
 })
 export class DetailsProduitComponent implements OnInit {
     listeProduits: Product[] = [];
-    bar: Product = {};
+    selectedProduit: Product = {};
+    selectedId: number = 1;
 
     constructor(public productsService: ProductsService) { }
 
@@ -21,7 +23,7 @@ export class DetailsProduitComponent implements OnInit {
             //     // console.log(product);
             //     this.listeProduits.push(product);
             // })
-            this.bar = this.getProduit(1);
+            this.selectedProduit = this.getProduit(1);
         },
         (err) => {
             alert('failed to get data from json');
@@ -39,7 +41,15 @@ export class DetailsProduitComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getProducts();
+        this.updateData();
     }
 
+    updateId(){
+        this.selectedProduit = this.getProduit(this.selectedId);
+    }
+
+    updateData(){
+      this.getProducts();
+      this.selectedProduit = this.getProduit(this.selectedId);
+    }
 }

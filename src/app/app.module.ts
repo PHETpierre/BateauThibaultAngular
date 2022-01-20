@@ -18,6 +18,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgChartsModule } from 'ng2-charts';
 
 //PlotlyModule.plotlyjs = PlotlyJS;
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { NgChartsModule } from 'ng2-charts';
     FormsModule,
     RouterModule,
     //PlotlyModule,
-    NgChartsModule
+    NgChartsModule,
+    NgSelectModule,
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
