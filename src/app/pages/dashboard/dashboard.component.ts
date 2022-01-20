@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
           this.CA += (transaction.price * transaction.quantite);
         }
         this.CA = Math.round(this.CA * 100) / 100
-        this.resultComptable += (transaction.price * transaction.quantite);
+        this.resultComptable += Math.round((transaction.price * transaction.quantite) * 100)/100;
       })
       this.transactionsCrustace = this.transactions.filter(transaction => (transaction.type == "Crustace" || transaction.type == "Crustaces"));
       this.generateBuisnessData(this.transactionsCrustace);
