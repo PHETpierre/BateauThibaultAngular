@@ -7,45 +7,44 @@ import { GlobalVariables } from "../../GlobalVariables";
   providedIn: 'root'
 })
 export class ProductsService {
-
-  url: String = "http://127.0.0.1:8000/";
   
   constructor(private http:HttpClient, private globalVar:GlobalVariables) { }
 
   getProductFromJson(){
-      return this.http.get<Product[]>(this.url+"../../../assets/products.json");
+      return this.http.get<Product[]>(this.globalVar.urlDev+"../../../assets/products.json");
   }
 
   getCrustaces(){
-    return this.http.get<Product[]>(this.url+"infocrustaces/");
+    return this.http.get<Product[]>(this.globalVar.urlDev+"/infocrustaces/");
   }
 
   getPoissons(){
-    return this.http.get<Product[]>(this.url+"infopoissons/");
+    return this.http.get<Product[]>(this.globalVar.urlDev+"/infopoissons/");
   }
 
   getFruitsDeMer(){
-    return this.http.get<Product[]>(this.url+"infofruitdemers/");
+    return this.http.get<Product[]>(this.globalVar.urlDev+"/infofruitdemers/");
   }
 
   addProductStock(product:Product){
-    return this.http.get<Product>(this.url+'incrementStock/'+product.id+'/'+((product.quantity)?product.quantity:0)+'/'+((Number.isInteger(product.price)) ? (product.price + ".0") : product.price));
+    return this.http.get<Product>(this.globalVar.urlDev+'/incrementStock/'+product.id+'/'+((product.quantity)?product.quantity:0)+'/'+((Number.isInteger(product.price)) ? (product.price + ".0") : product.price));
   }
 
   removeProductStock(product:Product){
-    return this.http.get<Product>(this.url+'decrementStock/'+product.id+'/'+((product.quantity)?product.quantity:0)+'/'+((Number.isInteger(product.price)) ? (product.price + ".0") : product.price));
+    var productQuantity = (product.quantity)?Math.abs(product.quantity):0;
+    var productPrice = (Number.isInteger(product.price)) ? (product.price + ".0") : product.price;
+    return this.http.get<Product>(this.globalVar.urlDev+'/decrementStock/'+product.id+'/'+productQuantity+'/'+productPrice);
   }
 
   putProductOnSale(product:Product){
-    return this.http.get<Product>(this.url+'putonsale/'+product.id+'/'+'/'+product.discount);
+    return this.http.get<Product>(this.globalVar.urlDev+'/putonsale/'+product.id+'/'+product.discount+'/');
   }
 
   getTransactions(){
-    return this.http.get<Product[]>(this.url+"transaction/");
+    return this.http.get<Product[]>(this.globalVar.urlDev+"/transaction/");
   }
   
   getProductFromPython(){
-      // return this.http.get<Product[]>("http://127.0.0.1:8000/infoproducts/");
       return this.http.get<Product[]>(this.globalVar.urlDev+"/infoproducts/");
   }
 }

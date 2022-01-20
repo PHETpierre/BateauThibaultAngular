@@ -11,6 +11,13 @@ import { DetailsProduitComponent } from './pages/details-produit/details-produit
 import { ProductsService } from './core/services/products.service';
 import { GestionProduitsComponent } from './pages/gestion-produits/gestion-produits.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+//import * as PlotlyJS from '@types/plotly.js';
+//import { PlotlyModule } from 'angular-plotly.js';
+import { NgChartsModule } from 'ng2-charts';
+
+//PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
@@ -19,13 +26,17 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     DetailsProduitComponent,
-    GestionProduitsComponent
+    GestionProduitsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    //PlotlyModule,
+    NgChartsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

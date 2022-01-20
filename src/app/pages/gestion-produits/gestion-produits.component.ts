@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../product.Product';
 import { ProductsService } from '../../core/services/products.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-gestion-produits',
@@ -13,7 +15,7 @@ export class GestionProduitsComponent implements OnInit {
   listeCrustaces: Product[] = [];
   listeFruitsDeMer: Product[] = [];
 
-  constructor(public productsService: ProductsService) { }
+  constructor(public productsService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPoissons();
@@ -55,15 +57,13 @@ export class GestionProduitsComponent implements OnInit {
   }
 
   addProductStock() {
-    this.listeCrustaces = this.addProductStockByArray(this.listeCrustaces);
-    this.listeFruitsDeMer = this.addProductStockByArray(this.listeFruitsDeMer);
-    this.listePoissons = this.addProductStockByArray(this.listePoissons);
+    this.addProductStockByArray(this.listeCrustaces);
+    this.addProductStockByArray(this.listeFruitsDeMer);
+    this.addProductStockByArray(this.listePoissons);
   }
 
   addProductStockByArray(products:Product[]){
-    let result:Product[] = [];
     products.forEach((product) => {
-      console.log("type of price", typeof product.price)
 
       if (typeof product.quantity != "number"){
         product.quantity = 0;
@@ -73,34 +73,53 @@ export class GestionProduitsComponent implements OnInit {
         product.discount = 0;
       }
 
+      if (typeof product.inStock != "number"){
+        product.inStock = 0;
+      }
+
       if (product.quantity > 0){
-        this.productsService.addProductStock(product).subscribe((data) => {
-          result.push(data);
-          console.log("one product => ",product)
-        })
+        this.productsService.addProductStock(product).subscribe();
       }
-      else if (product.quantity < 0) {
-        product.quantity = product.quantity * -1;
-        this.productsService.removeProductStock(product).subscribe((data) => {
-          result.push(data);
-        })
-      }
-      else {
-        result.push(product);
+      
+      if (product.quantity < 0) {
+        this.productsService.removeProductStock(product).subscribe();
       }
 
       if (product.discount != 0){
-        this.productsService.putProductOnSale(product).subscribe((data) => {
-          result.push(data);
-        })
-      }
-      else {
-        result.push(product);
+        this.productsService.putProductOnSale(product).subscribe();
       }
 
+      product.inStock = product.inStock + product.quantity;
+      product.quantity = 0;
+
     })
-    console.log("products result=> ",result)
-    return result;
+  }
+
+  updateStock(product:Product, type:String){
+    switch(type){
+      case 'crustace':
+        if (typeof product.quantity != "number"){
+          product.quantity = 0;
+        }
+  
+        if (typeof product.inStock != "number"){
+          product.inStock = 0;
+        }
+
+        product.inStock = product.inStock + product.quantity;
+        /*this.listeCrustaces.forEach(crustace => {
+          if (crustace.id == product.id){
+            //crustace.inStock += product.quantity;
+          }
+        });*/
+        break;
+      case 'fruitDeMer':
+        break;
+      case 'poisson':
+        break;
+      default:
+        console.error("the type : ''"+type+"'' doesn't exist");
+    }
   }
 
 }
