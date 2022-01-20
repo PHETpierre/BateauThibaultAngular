@@ -7,11 +7,11 @@ import { GlobalVariables } from "../../GlobalVariables";
   providedIn: 'root'
 })
 export class ProductsService {
-  
+
   constructor(private http:HttpClient, private globalVar:GlobalVariables) { }
 
-  getProductFromJson(){
-      return this.http.get<Product[]>(this.globalVar.urlDev+"../../../assets/products.json");
+  getProducts(){
+    return this.http.get<Product[]>(this.globalVar.urlDev+"/infoproducts/");
   }
 
   getCrustaces(){
@@ -42,9 +42,5 @@ export class ProductsService {
 
   getTransactions(){
     return this.http.get<Product[]>(this.globalVar.urlDev+"/transaction/");
-  }
-  
-  getProductFromPython(){
-      return this.http.get<Product[]>(this.globalVar.urlDev+"/infoproducts/");
   }
 }
