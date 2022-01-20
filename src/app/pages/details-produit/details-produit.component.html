@@ -30,13 +30,13 @@
         <div>promotion: {{ selectedProduit.sale }}</div>
         <div>taux de promotion : {{ selectedProduit.discount }}</div>
         <div>prix en promotion: {{ selectedProduit.price_on_sale }}</div>
-        <div>quantite vendu: {{ selectedProduit.quantity_sold }}</div>
+        <!-- <div>quantite vendu: {{ selectedProduit.quantity_sold }}</div> -->
         <div>commentaire: {{ selectedProduit.comments }}</div>
     </div>
     <div class="bg-light p-1 mt-1 rounded-3">
         <div style="text-align:center" class="bg-light p-1">
             <div>Modifier quantité</div>
-            <input type="number" class="col-sm-4" name="inputQuantity" [(ngModel)]="selectedProduit.quantity">
+            <input type="number" min=0 class="col-sm-4" name="inputQuantity" [(ngModel)]="selectedProduit.quantity">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-primary m-1" (click)="addProduct()">Ajouter</button>
                 <button type="button" class="btn btn-danger m-1" (click)="removeProduct()">Retirer</button>
@@ -44,7 +44,7 @@
         </div>
         <div style="text-align:center" class="bg-light">
             <div>Modifier promotion</div>
-            <input type="number" class="col-sm-4" name="inputDiscount" [(ngModel)]="selectedProduit.discount">
+            <input type="number" min=0 class="col-sm-4" name="inputDiscount" [(ngModel)]="selectedProduit.discount">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-primary m-1" (click)="modifyPromotion()">Modifier</button>
             </div>

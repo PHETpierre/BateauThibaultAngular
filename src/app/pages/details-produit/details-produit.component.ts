@@ -17,9 +17,10 @@ export class DetailsProduitComponent implements OnInit {
 
     getProducts(){
         this.productsService.getProducts().subscribe((res: Product[]) => {
-            console.log(res);
+            // console.log(res);
             this.listeProduits = res;
-            this.selectedProduit = this.getProduit(1);
+            // this.selectedProduit = this.getProduit(1);
+            this.getProduit(1);
         },
         (err) => {
              alert('failed to get data from json');
@@ -27,11 +28,19 @@ export class DetailsProduitComponent implements OnInit {
     };
 
     getProduit(id: number){
-        let result: Product = {};
-        this.listeProduits.forEach((product) => {
-            if(product.id == id) result = product;
-        });
-        return result;
+        // let result: Product = {};
+        this.productsService.getSingleProduct(this.selectedId).subscribe((res:Product) => {
+            // console.log(res);
+            this.selectedProduit = res;
+            // result = res;
+        },
+        (err) => {
+             alert('failed to get data from json');
+         })
+        // this.listeProduits.forEach((product) => {
+        //     if(product.id == id) result = product;
+        // });
+        // return result;
     }
 
     ngOnInit(): void {
@@ -39,7 +48,8 @@ export class DetailsProduitComponent implements OnInit {
     }
 
     updateId(){
-        this.selectedProduit = this.getProduit(this.selectedId);
+        // this.selectedProduit = this.getProduit(this.selectedId);
+        this.getProduit(this.selectedId);
     }
 
     addProduct(){
@@ -52,20 +62,33 @@ export class DetailsProduitComponent implements OnInit {
     }
 
     removeProduct(){
-      this.productsService.removeProductStock(this.selectedProduit).subscribe((res: Product) => {
-        this.getProducts();
-      },
-      (err) => {
-          alert('failed to add data');
-      })
+      if(typeof this.selectedProduit.inStock == "number" && typeof this.selectedProduit.quantity == "number"){
+          let productDiff = this.selectedProduit.inStock - this.selectedProduit.quantity;
+          // console.log(productDiff);
+            if(productDiff <= 0){
+                alert("Quantité saisie invalide");
+            }else{
+                this.productsService.removeProductStock(this.selectedProduit).subscribe((res: Product) => {
+                    this.getProducts();
+                },
+                (err) => {
+                    alert('failed to add data');
+                })
+            }
+        }
     }
 
     modifyPromotion(){
-      this.productsService.putProductOnSale(this.selectedProduit).subscribe((res: Product) => {
-        this.getProducts();
-      },
-      (err) => {
-          alert('failed to add data');
-      })
+      if(typeof this.selectedProduit.discount == "number" && this.selectedProduit.discount <= 100 &&
+  this.selectedProduit.discount >= 0){
+         this.productsService.putProductOnSale(this.selectedProduit).subscribe((res: Product) => {
+            this.getProducts();
+          },
+          (err) => {
+              alert('failed to add data');
+          })
+      }else{
+          alert("Promotion saisie invalide")
+      }
     }
 }
