@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartPlugins = [];
-
   barChartData: ChartDataset[] = [];
   barChartData2: ChartDataset[] = [];
 
