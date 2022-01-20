@@ -41,11 +41,15 @@ export class DetailsProduitComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getProducts();
-        this.selectedProduit = this.getProduit(this.selectedId);
+        this.updateData();
     }
 
     updateId(){
         this.selectedProduit = this.getProduit(this.selectedId);
+    }
+
+    updateData(){
+      this.getProducts();
+      this.selectedProduit = this.getProduit(this.selectedId);
     }
 }
