@@ -1,5 +1,10 @@
-<div class="row col-sm-12">
-    <h1 style="text-align:center" class="col-sm-12">Page d'affichage des details du produit</h1>
+<div class="p-5 mb-4 bg-info">
+    <div class="container-fluid py-5">
+      <h1 class="display-5">Page d'affichage des details du produit</h1>
+    </div>
+  </div>
+
+<div class="container">
 
     <!-- <input type="text" name="" value="" (input)="suggest()"> -->
 
@@ -14,7 +19,7 @@
                (change)="updateId()">
     </ng-select>
 
-    <div style="text-align:center" class="col-sm-12 bg-light border rounded-3">
+    <div style="text-align:center" class="bg-light border rounded-3">
         <div>Poisson details</div>
         <div>nom: {{ selectedProduit.name }}</div>
         <div>
@@ -27,8 +32,8 @@
         <div>quantite vendu: {{ selectedProduit.quantity_sold }}</div>
         <div>commentaire: {{ selectedProduit.comments }}</div>
     </div>
-    <div class="col-sm-12 bg-light p-1 m-1 rounded-3">
-        <div style="text-align:center" class="col-sm-12 bg-light p-1">
+    <div class="bg-light p-1 m-1 rounded-3">
+        <div style="text-align:center" class="bg-light p-1">
             <div>Modifier quantité</div>
             <input type="number" class="col-sm-4" name="" value="">
             <div class="col-sm-12">
@@ -36,7 +41,7 @@
                 <button type="button" class="btn btn-danger m-1">Retirer</button>
             </div>
         </div>
-        <div style="text-align:center" class="col-sm-12 bg-light">
+        <div style="text-align:center" class="bg-light">
             <div>Modifier promotion</div>
             <input type="number" class="col-sm-4" name="" value="">
             <div class="col-sm-12">
