@@ -32,6 +32,9 @@ export class DetailsProduitComponent implements OnInit {
         this.productsService.getSingleProduct(this.selectedId).subscribe((res:Product) => {
             // console.log(res);
             this.selectedProduit = res;
+            this.selectedProduit.price = (typeof this.selectedProduit.price != "number")? 0: this.selectedProduit.price;
+            this.selectedProduit.discount = (typeof this.selectedProduit.discount != "number")? 0: this.selectedProduit.discount;
+            this.selectedProduit.price_on_sale = this.selectedProduit.price * (1-this.selectedProduit.discount/100);
             // result = res;
         },
         (err) => {

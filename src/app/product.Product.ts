@@ -3,7 +3,7 @@ export interface Product {
     name?: string;
     quantity?: number;
     quantity_stock?: number;
-    price?: Number;
+    price?: number;
     discount?: number;
     price_on_sale?: number;
     quantity_sold?: number;
